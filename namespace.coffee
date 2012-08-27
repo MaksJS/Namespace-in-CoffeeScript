@@ -1,9 +1,9 @@
 ###
-# Elegant pattern to simulate namespace in coffeescript
+# Elegant pattern to simulate namespace in Coffeescript
 #
 # @param {Object} obj
 #
-# Use :
+# How to use :
 # namespace Foo:
 #   class Bar extends Baz
 #     [...]
