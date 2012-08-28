@@ -3,6 +3,7 @@
 #
 # @option {Object} root      by default it's window
 # @param  {Object} o         the class we want to include in the namespace
+# @author Maks
 #
 # Note : "separator" variable is the separator for the namespace's subpackages, by default it's a dot, can be a slash \ like PHP's namespaces for example
 ###
@@ -21,6 +22,12 @@
 #     [...]
 #
 # We need this workaround because we must expose the targeted "exports" to this module
+#
+# Note : if you use subpackages, you will need to quote the name of the namespace 
+# namespace 'Foo.bar.baz':
+#  class myClass
+# namespace 'Foo\bar\baz':
+#  class myClass
 ###
 
 (exports ? window).namespace = (root = window, o) ->
