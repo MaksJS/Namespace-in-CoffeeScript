@@ -16,12 +16,10 @@ How to use in CommonJS environment :
 ```coffeescript
 {namespace} = require './path/to/this/file'
 
-namespace exports, Foo:
+namespace Foo:
   class Bar extends Baz
     #[...]
 ```
-
-We need this workaround because we must expose the targeted "exports" to this module
 
 Note : if you use subpackages, you will need to quote the name of the namespace 
 ```coffeescript
