@@ -36,3 +36,4 @@
   root            = root[subpackage] ||= {} for subpackage in name.split separator
   className       = Class.name or regex.exec(Class.toString())[1] # IE doesn't have the name property so we use the Regex here
   root[className] = Class
+  if window? then window[className] = root[className] # Force to expose the namespace to the global namespace if the class is wrapped in the coffeescript safety wrapper
