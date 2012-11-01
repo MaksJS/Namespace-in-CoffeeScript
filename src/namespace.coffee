@@ -11,7 +11,7 @@
 
   fn = ->
     [name, Class]      = [key, value] for key, value of arguments[0]
-    target             = root[subpackage] or= {} for subpackage in name.split separator
+    target             = (target ?= root)[subpackage] or= {} for subpackage in name.split separator
     Class.name        ?= Class.toString().split('function ')[1].split('(')[0] # Fix for IE
     target[Class.name] = Class
 
