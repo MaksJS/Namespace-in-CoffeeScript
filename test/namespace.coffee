@@ -2,6 +2,7 @@
 # Testing the namespace module width Mocha and Chai
 #
 # You need Mocha to be installed globally with npm install -g mocha
+# Then type mocha --compilers coffee:coffee-script -R spec --colors into the main directory
 ###
 
 # Chai assertion librairy
