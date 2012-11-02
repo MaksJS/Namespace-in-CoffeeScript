@@ -27,10 +27,14 @@ namespace 'Package3.SubPackage1':
 module 'Package4.SubPackage1':
   class Foo
 
+namespace global:
+  class Bar
+
 instance1 = new Package1.Foo
 instance2 = new Package2.Foo
 instance3 = new Package3.SubPackage1.Foo
 instance4 = new Package4.SubPackage1.Foo
+instance5 = new Bar
 
 # Testing
 describe 'Namespace module testing', ->
@@ -53,6 +57,9 @@ describe 'Namespace module testing', ->
   it "Package4.SubPackage1.Foo should be a Class", ->
     Package4.SubPackage1.Foo.should.be.a('function')
 
+  it "global.Bar should be a Class", ->
+    Bar.should.be.a('function')
+
   it "instance1 should be a valid object", ->
     instance1.should.be.an('object')
 
@@ -64,3 +71,6 @@ describe 'Namespace module testing', ->
 
   it "instance4 should be a valid object", ->
     instance4.should.be.an('object')
+
+  it "instance5 should be a valid object", ->
+    instance5.should.be.an('object')
