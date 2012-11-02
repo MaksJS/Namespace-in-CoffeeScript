@@ -48,3 +48,11 @@ If you use slashes :
 namespace 'Foo\bar\baz':
   class myClass
 ```
+
+You can specify that you want to use the global namespace. So your code will be exposed to the correct root : window or global for CommonJS environment.
+So you don't need to write something like root = exports ? windows, root.myClass = myClass under your class.
+
+```coffeescript
+namespace global:
+  class myClass
+```
