@@ -21,10 +21,13 @@ namespace Package1:
 module Package2:
   class Foo
 
-namespace 'Package3.SubPackage1':
+namespace Package3:SubPackage1:
   class Foo
 
-module 'Package4.SubPackage1':
+module Package4:SubPackage1:
+  class Foo
+
+module Package5:SubPackage1:SubPackage2:
   class Foo
 
 namespace global:
@@ -56,6 +59,9 @@ describe 'Namespace module testing', ->
 
   it "Package4.SubPackage1.Foo should be a Class", ->
     Package4.SubPackage1.Foo.should.be.a('function')
+
+  it "Package5.SubPackage1.SubPackage2.Foo should be a Class", ->
+    Package5.SubPackage1.SubPackage2.Foo.should.be.a('function')
 
   it "global.Bar should be a Class", ->
     Bar.should.be.a('function')

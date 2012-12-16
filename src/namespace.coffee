@@ -6,13 +6,19 @@
 
 ((root) ->
   
-  # Separator for packages, can be a dot, a slash...
-  separator = '.'
-
   fn = ->
-    [name, Class]      = [key, value] for key, value of arguments[0]
-    target             = (target ?= root)[subpackage] or= {} for subpackage in name.split separator
-    target             = root if name is 'global'
+
+    args   = arguments[0]
+    target = root
+
+    loop
+      for subpackage, obj of args
+        target = target[subpackage] or= {}
+        args   = obj
+      break unless typeof args is 'object'
+
+    Class              = args
+    target             = root if arguments[0].hasOwnProperty 'global'
     Class.name        ?= Class.toString().split('function ')[1].split('(')[0] # Fix for IE
     target[Class.name] = Class
 
