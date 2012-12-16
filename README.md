@@ -12,7 +12,7 @@ namespace Foo:
 ```
 
 ```coffeescript
-namespace Foo:SubPackage1:SubPackage2
+namespace Foo:SubPackage1:SubPackage2:
   class Bar extends Baz
     #[...]
 ```
@@ -26,7 +26,7 @@ module Foo:
 ```
 
 ```coffeescript
-module Foo:SubPackage1:SubPackage2
+module Foo:SubPackage1:SubPackage2:
   class Bar extends Baz
     #[...]
 ```
@@ -35,6 +35,7 @@ then
 
 ```coffeescript
 instance = new Foo.Bar
+other    = new Foo.SubPackage1.SubPackage2.Bar
 ```
 
 How to use in CommonJS environment :
