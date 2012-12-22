@@ -17,10 +17,10 @@
         args   = obj
       break unless typeof args is 'object'
 
-    Class              = args
-    target             = root if arguments[0].hasOwnProperty 'global'
-    Class.name        ?= Class.toString().split('function ')[1].split('(')[0] # Fix for IE
-    target[Class.name] = Class
+    Class        = args
+    target       = root if arguments[0].hasOwnProperty 'global'
+    name         = Class.toString().match(/^function\s(.+)\(/)[1]
+    target[name] = Class
 
   # Aliases
   root.namespace = fn
