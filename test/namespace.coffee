@@ -1,8 +1,8 @@
 ###
 # Testing the namespace module width Mocha and Chai
 #
-# You need Mocha to be installed globally with npm install -g mocha
-# Then type mocha --compilers coffee:coffee-script -R spec --colors into the main directory
+# You need Mocha to be installed globally : npm install -g mocha
+# Then run npm test
 ###
 
 # Chai assertion librairy
@@ -10,73 +10,51 @@ do (chai = require 'chai').should
 # Namespace module
 require '../src/namespace'
 
-# Fix : module is already defined by CommonJS's module so we need to explicity bind module to the global reference
-# Module notation is only really used in browser environnement
+# Module is already defined by CommonJS's module so here we need to explicity bind "module" notation to the global reference
 module = global.module
 
-# Fixtures
-namespace Package1:
-  class Foo
-
-module Package2:
-  class Foo
-
-namespace Package3:SubPackage1:
-  class Foo
-
-module Package4:SubPackage1:
-  class Foo
-
-module Package5:SubPackage1:SubPackage2:
-  class Foo
-
-namespace global:
-  class Bar
-
-instance1 = new Package1.Foo
-instance2 = new Package2.Foo
-instance3 = new Package3.SubPackage1.Foo
-instance4 = new Package4.SubPackage1.Foo
-instance5 = new Bar
-
-# Testing
 describe 'Namespace module testing', ->
 
-  it "should return that namespace function is globally defined", ->
+  it "should be globally defined", ->
     namespace.should.exist
 
-  it "should return that module function is globally defined", ->
+  it "should be globally defined", ->
     module.should.exist
 
-  it "Package1.Foo should be a Class", ->
+  it "should be the same reference", ->
+    namespace.should.equal module
+
+  namespace Package1:
+    class Foo
+
+  it "should be a class", ->
     Package1.Foo.should.be.a('function')
 
-  it "Package2.Foo should be a Class", ->
-    Package2.Foo.should.be.a('function')
+  namespace Package1:SubPackage1:
+    class Foo
 
-  it "Package3.SubPackage1.Foo should be a Class", ->
-    Package3.SubPackage1.Foo.should.be.a('function')
+  it "should be a class", ->
+    Package1.SubPackage1.Foo.should.be.a('function')
 
-  it "Package4.SubPackage1.Foo should be a Class", ->
-    Package4.SubPackage1.Foo.should.be.a('function')
+  namespace Package1:SubPackage1:SubPackage2:
+    class Foo
 
-  it "Package5.SubPackage1.SubPackage2.Foo should be a Class", ->
-    Package5.SubPackage1.SubPackage2.Foo.should.be.a('function')
+  it "should be a class", ->
+    Package1.SubPackage1.SubPackage2.Foo.should.be.a('function')
 
-  it "global.Bar should be a Class", ->
+  namespace global:
+    class Bar
+
+  it "should be a global class", ->
     Bar.should.be.a('function')
+    global.Bar.should.be.a('function')
 
-  it "instance1 should be a valid object", ->
+  instance1 = new Package1.Foo
+
+  it "should be a valid object", ->
     instance1.should.be.an('object')
 
-  it "instance2 should be a valid object", ->
+  instance2 = new Package1.SubPackage1.Foo
+
+  it "should be a valid object", ->
     instance2.should.be.an('object')
-
-  it "instance3 should be a valid object", ->
-    instance3.should.be.an('object')
-
-  it "instance4 should be a valid object", ->
-    instance4.should.be.an('object')
-
-  it "instance5 should be a valid object", ->
-    instance5.should.be.an('object')
