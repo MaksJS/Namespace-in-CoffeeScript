@@ -4,7 +4,7 @@
 # @author Maks
 ###
 
-((root) ->
+do (root = global ? window) ->
   
   fn = ->
 
@@ -25,5 +25,3 @@
   # Aliases
   root.namespace = fn
   root.module    = fn
-
-)(global ? window)
