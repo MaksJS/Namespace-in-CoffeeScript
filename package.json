@@ -1,8 +1,8 @@
 {
-  "name": "Namespace-in-CoffeeScript",
+  "name": "namespace",
   "version": "1.0.0",
   "description": "pattern to simulate namespace in coffeescript ",
-  "main": "index.js",
+  "main": "src/namespace.coffee",
   "directories": {
     "test": "test"
   },
@@ -18,5 +18,5 @@
     "url": "https://github.com/MaksJS/Namespace-in-CoffeeScript.git"
   },
   "author": "MaksJS",
-  "license": "BSD"
+  "license": "MIT"
 }
