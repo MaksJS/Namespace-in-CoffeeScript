@@ -38,7 +38,7 @@ instance = new Foo.Bar
 other    = new Foo.SubPackage1.SubPackage2.Bar
 ```
 
-__Notice : Don't use the same name for your namespace and your class to avoid collisions.
+__Notice : Don't use the same name for your namespace and your class to avoid collisions.__
 
 How to use in CommonJS environment :
 
