@@ -19,7 +19,7 @@ do (root = global ? window) ->
 
     Class        = args
     target       = root if arguments[0].hasOwnProperty 'global'
-    name         = Class.toString().match(/^function\s(.+)\(/)[1]
+    name         = Class.toString().match(/^function\s(\w+)\(/)[1]
     target[name] = Class
 
   # Aliases
