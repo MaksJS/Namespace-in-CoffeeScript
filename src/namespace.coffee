@@ -20,7 +20,9 @@ do (root = global ? window) ->
     Class        = args
     target       = root if arguments[0].hasOwnProperty 'global'
     name         = Class.toString().match(/^function\s(\w+)\(/)[1]
+    proto        = target[name] or undefined
     target[name] = Class
+    if proto then target[name][i] = proto[i] for i of proto
 
   # Aliases
   root.namespace = fn
